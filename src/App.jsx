@@ -705,14 +705,13 @@ export default function App() {
     if (!familyUser) return
     setDataLoading(true)
     const { data } = await supabase.from('expenses')
-      .select(`id,family_id,payer_user_id,expense_date,month_key,
+      .select(`id,family_id,payer_user_id,payer_name,expense_date,month_key,
                category,description,amount,split_mode,custom_gianni_pct,
-               beneficiaries,created_at,
-               family_users!expenses_payer_user_id_fkey(display_name)`)
+               beneficiaries,created_at`)
       .eq('family_id', familyUser.family_id)
       .order('expense_date', { ascending:false })
 
-    const enriched = (data??[]).map(e => ({ ...e, payer_name: e.family_users?.display_name ?? '?' }))
+    const enriched = (data??[]).map(e => ({ ...e, payer_name: e.payer_name ?? '?' }))
     setExpenses(enriched)
 
     const months = [...new Set(enriched.map(e=>e.month_key))].sort().reverse()
