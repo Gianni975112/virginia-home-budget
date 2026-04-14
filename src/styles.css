@@ -42,7 +42,9 @@ html { font-size: 16px; scroll-behavior: smooth; }
 
 body {
   font-family: 'Nunito', sans-serif;
-  background: var(--bg);
+  background:
+    linear-gradient(rgba(240,244,255,0.93), rgba(240,244,255,0.93)),
+    url('/famiglia.jpg') center top / cover fixed;
   color: var(--ink);
   min-height: 100dvh;
   line-height: 1.6;
@@ -57,7 +59,9 @@ button { cursor: pointer; border: none; background: none; }
   min-height: 100dvh;
   display: flex; align-items: center; justify-content: center;
   padding: 24px; position: relative; overflow: hidden;
-  background: linear-gradient(135deg, #E8EEF8 0%, #F0F4FF 50%, #EEF2FF 100%);
+  background:
+    linear-gradient(135deg, rgba(30,58,95,0.70) 0%, rgba(45,80,128,0.65) 100%),
+    url('/famiglia.jpg') center center / cover no-repeat;
 }
 
 .login-decoration { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
